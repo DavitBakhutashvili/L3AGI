@@ -40,6 +40,7 @@ import { ChatStatus, TeamOfAgentsType } from 'types'
 import useStopChatService from 'services/chat/useStopChatService'
 import { useConfigsService } from 'services/config/useConfigsService'
 import getSessionId from '../utils/getSessionId'
+import { ButtonSecondary } from 'components/Button/Button'
 
 type ChatV2Props = {
   isPrivate?: boolean
@@ -336,14 +337,13 @@ const ChatV2 = ({ isPrivate = false }: ChatV2Props) => {
 
             {canStopGenerating && (
               <StyledStopGeneratingButton>
-                <Button
+                <ButtonSecondary
                   onClick={handleStopGenerating}
                   size={Button.sizes.SMALL}
-                  kind={Button.kinds.SECONDARY}
                   disabled={stopChatLoading}
                 >
                   Stop Generating
-                </Button>
+                </ButtonSecondary>
               </StyledStopGeneratingButton>
             )}
           </StyledButtonGroup>
@@ -483,18 +483,12 @@ const ChatV2 = ({ isPrivate = false }: ChatV2Props) => {
 export default ChatV2
 
 const StyledWrapper = styled.div`
-  // display: flex;
-  // flex-direction: column;
   height: 100%;
   width: 100%;
   overflow-y: auto;
   transition: background-color 300ms ease-in-out;
   position: relative;
   margin: 0 auto;
-  // border: 1px solid red;
-  /* padding-bottom: 50px; */
-  /* height: calc(100% - 80px); */
-  /* margin-bottom: 100px; */
 `
 
 const StyledMessages = styled.main`
@@ -526,8 +520,6 @@ const StyledForm = styled.form`
 
   backdrop-filter: blur(100px);
 
-  /* Note: backdrop-filter has minimal browser support */
-
   border-radius: 100px;
   /* cursor: pointer; */
 
@@ -535,20 +527,6 @@ const StyledForm = styled.form`
   min-height: 48px;
   height: fit-content;
   max-height: 250px;
-`
-
-const StyledSelect = styled.select`
-  outline: none;
-  border: none;
-  padding-left: 24px;
-  height: 100%;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.6);
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  color: rgba(255, 255, 255, 0.6);
 `
 
 const StyledTextareaWrapper = styled.div`
@@ -666,31 +644,6 @@ const StyledChatBottom = styled.div`
   gap: 10px;
   padding: 0 50px;
   width: 100%;
-`
-const StyledReplyBox = styled.div`
-  position: absolute;
-  /* z-index: 100000000; */
-  /* background: var(--primitives-gray-800, #383f4b); */
-  width: 100%;
-  height: 40px;
-  top: -40px;
-  left: 0;
-
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(100px);
-  /* box-shadow: 0px 8px 6px rgba(0, 0, 0, 0.05), inset 0px -1px 1px rgba(255, 255, 255, 0.1),
-    inset 0px 1px 1px rgba(255, 255, 255, 0.25); */
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 15px;
-  border-radius: 8px;
-`
-const StyledReplyText = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 5px;
 `
 const StyledMembersWrapper = styled.div`
   position: absolute;
